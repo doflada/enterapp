@@ -1,0 +1,91 @@
+<core.logout-view></core.logout-view>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-4">
+
+      <p>
+        Alege salariat pentru editare informatii:
+        <input ng-model="filtru" ng-change="cfiltru( filtru )" />
+      </p>
+
+      <table class="table table-striped table-bordered table-hover table-checkable datatable" style="width:50%">
+        <thead class="grid-top-panel">
+            <tr>
+                <th style="width:10%">ID</th>
+                <th style="width:90%">Nume</th>
+                <th style="width:90%">Prenume</th>
+                <th style="width:90%">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="salariat in salariati | filter:filtru" ng-click="cursalariat($event.currentTarget)">
+                <td id="idsalariat">{{salariat.id}}</td>
+                <td id="idnumesalariat">{{salariat.nume}}</td>
+                <td id="idprenumesalariat">{{salariat.prenume}}</td>
+                <td id="idemailsalariat">{{salariat.email}}</td>
+            </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="col-md-8">
+
+      <p class="h2"> Editare salariat cu id: {{ids}} selectat</p>
+
+      <form name="salariatForm" class="form-horizontal">
+        <div class="form-group">
+          <label for="numeSalariat" class="col-sm-3 control-label">Nume</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="numeSalariat" ng-model="numes" ng-change="cfiltru( numes )">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prenumeSalariat" class="col-sm-3 control-label">Prenume</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="prenumeSalariat" ng-model="prens">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emailSalariat" class="col-sm-3 control-label">Email</label>
+          <div class="col-sm-4">
+            <input type="email" class="form-control" id="emailSalariat" ng-model="emails">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dataInput" class="col-sm-3 control-label">Data nasterii:</label>
+          <div class="col-sm-4">
+            <input type="date" id="dataInput" name="datainput" ng-model="datas"
+                  placeholder="yyyy-MM-dd" pattern="\d{4}-\d{2}-\d{2}"/>
+          </div>
+        </div>
+        <div class="form-inline">
+            <div class="form-group">
+              <label for="departament">Departament {{iddep}} :</label>
+              <select id="departament"
+                ng-model="departs" ng-options="c.numedepartament for c in departamente" ng-change="depchange()">
+              </select>
+              <label for="birou">Birou {{idbir}} :</label>
+              <select id="birou"
+                ng-model="birous" ng-options="c.numebirou for c in curbirasoc" ng-change="birchange()">
+              </select>
+              <label for="manager"> Este manager:</label>
+              <input type="checkbox" name="manager" ng-model="mans" ng-checked="mans">
+            </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" form="salariatForm" class="btn btn-default" ng-click="reset()">Reset</button>
+            <button type="button" class="btn btn-danger" ng-click="modifica('STERGE')">Sterge salariat</button>
+            <button type="button" class="btn btn-primary" ng-click="modifica(numes)">Save</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,47 @@
+/* app css stylesheet */
+
+.navbar-header {
+  width: 100%;
+}
+
+.navbar-header img {
+  height: 25px;
+  width: auto;
+}
+
+.navbar-header p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  background-color: black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 0px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.navbar-btn:hover {
+  text-decoration: underline;
+}
+
+#inputUser, #inputPassword {
+  width: 25%;
+}
+
+.form-group {
+  margin: 15px;
+}
+
+.birouri {
+  list-style: none;
+  font-size: 2rem;
+}
+
+.birouri li {
+  clear: both;
+  height: 35px;
+  padding-top: 5px;
+}
